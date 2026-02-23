@@ -304,7 +304,8 @@ static void drawDepartures(const Departure& a, const Departure& b, const Weather
  */
 static bool fetch_next2(Departure &d1, Departure &d2, Weather &w) {
   WiFiClientSecure client;
-  client.setInsecure(); // worker uses TLS but we skip cert validation on-device
+  client.setInsecure(); // worker uses TLS but cert validation is skipped on-device
+                        // no API key needed here — auth lives in the Worker
 
   HTTPClient http;
   const char* url =

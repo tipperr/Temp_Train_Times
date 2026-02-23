@@ -30,7 +30,6 @@ An ESP32 project that displays live Caltrain departure times and local weather o
 #define WIFI_PASS      "your-home-wifi-password"
 #define WIFI_SSID_RC   "your-redwood-city-wifi-ssid"
 #define WIFI_PASS_RC   "your-redwood-city-wifi-password"
-#define API_KEY_511    "your-511-api-key"
 ```
 
 2. Build and flash with PlatformIO:
@@ -42,4 +41,4 @@ pio device monitor
 
 ## Data Source
 
-Departure and weather data is fetched from a Cloudflare Worker that proxies the 511 SF Bay transit API and an open-meteo weather API. The worker returns both home and Redwood City data in a single request, with the device selecting the relevant fields based on its detected location.
+Departure and weather data is fetched from a Cloudflare Worker that proxies the 511 SF Bay transit API and an open-meteo weather API. The worker returns both home and Redwood City data in a single request, with the device selecting the relevant fields based on its detected location. The 511 API key lives in the Worker — the device calls the Worker directly with no credentials.
